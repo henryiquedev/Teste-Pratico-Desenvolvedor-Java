@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+    <title>Cadastro de Solicitante</title>
+</h:head>
+<h:body>
+    <h:form id="agendamentoForm">
+        <p:panel header="Cadastro de Agendamento">
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <h:outputLabel for="nome" value="Nome: *" />
+                <p:inputText id="nome" value="#{solicitanteBean.solicitante.nome}" required="true" />
+
+                <h:button value="Sair" outcome="homeagendamento.xhtml" />
+                <h:commandButton value="Salvar" action="#{solicitanteBean.salvar}" />
+
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

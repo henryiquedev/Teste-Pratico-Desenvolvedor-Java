@@ -30,38 +30,38 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 
 **1. Camadas do Projeto**
 
-Controller (Camada de Controle):
-Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeamento dos arquivo XHTML.
-Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
-Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
+- Controller (Camada de Controle):
+  Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeamento dos arquivo XHTML.
+  Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
+  Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
 
-Service (Camada de Serviço):
-Contém a lógica de negócio da aplicação.
-Utiliza a anotação @Service do Spring.
-Exemplo: AgendamentoService que contém métodos para salvar, buscar e listar agendamentos.
+- Service (Camada de Serviço):
+  Contém a lógica de negócio da aplicação.
+  Utiliza a anotação @Service do Spring.
+  Exemplo: AgendamentoService que contém métodos para salvar, buscar e listar agendamentos.
 
-Repository (Camada de Repositório):
-Responsável pela interação com o banco de dados.
-Utiliza Spring Data JPA para operações CRUD.
-Exemplo: AgendamentoRepository que estende JpaRepository para fornecer métodos de acesso ao banco de dados.
+- Repository (Camada de Repositório):
+  Responsável pela interação com o banco de dados.
+  Utiliza Spring Data JPA para operações CRUD.
+  Exemplo: AgendamentoRepository que estende JpaRepository para fornecer métodos de acesso ao banco de dados.
 
-Model (Camada de Modelo):
-Contém as classes de entidade que representam as tabelas do banco de dados.
-Utiliza anotações do JPA (@Entity, @Table, @Column, etc.) para mapear classes Java para tabelas no banco de dados.
-Exemplo: Agendamento e Solicitante.
+- Model (Camada de Modelo):
+  Contém as classes de entidade que representam as tabelas do banco de dados.
+  Utiliza anotações do JPA (@Entity, @Table, @Column, etc.) para mapear classes Java para tabelas no banco de dados.
+  Exemplo: Agendamento e Solicitante.
 
 **2. Frameworks e Ferramentas Utilizadas**
 
-Spring Boot:
-Framework principal para criar aplicações Java robustas e escaláveis.
-Spring Data JPA:
-Abstração sobre o JPA para facilitar operações com o banco de dados.
-Hibernate:
-Implementação do JPA usada para mapeamento objeto-relacional.
-PrimeFaces:
-Biblioteca de componentes UI para JSF.
-HSQLDB:
-Banco de dados relacional leve usado para persistência de dados.
+ - Spring Boot:
+    Framework principal para criar aplicações Java robustas e escaláveis.
+- Spring Data JPA:
+  Abstração sobre o JPA para facilitar operações com o banco de dados.
+- Hibernate:
+  Implementação do JPA usada para mapeamento objeto-relacional.
+- PrimeFaces:
+  Biblioteca de componentes UI para JSF.
+- HSQLDB:
+  Banco de dados relacional leve usado para persistência de dados.
 
 **3. Banco de Dados**
 Utiliza HSQLDB como banco de dados embutido para desenvolvimento e testes.

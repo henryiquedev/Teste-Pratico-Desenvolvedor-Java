@@ -24,7 +24,7 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
   - `AgendamentoRepository`,`SolicitanteRepository`,`VagaRepository`
 - **Model Layer:** Representa as entidades do banco de dados.
   - `Agendamento`,`Solicitante`,`Vaga`
--  **Bean:** Ponte entre a camada de visão (a interface do usuário) e a camada de serviço/lógica de negócios na aplicação.
+- **Bean:** Ponte entre a camada de visão (a interface do usuário) e a camada de serviço/lógica de negócios na aplicação.
   - `AgendamentoBean`, `SolicitanteBean`,`VagaBean`
 
 

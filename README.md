@@ -186,7 +186,6 @@ GET /api/solicitantes
 2. **Compile e Empacote o Projeto**
    - mvn clean
    - mvn install -DskipTests
-   - java -jar -Dserver.port=9494 target/Teste-Pratico-Desenvolvedor-Java-0.0.2-SNAPSHOT.jar
 3. **Execute a Aplicação**
    - java -jar -Dserver.port=9494 target/Teste-Pratico-Desenvolvedor-Java-0.0.2-SNAPSHOT.jar
 4. **Acesse a Aplicação**

@@ -151,8 +151,8 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
   quantidade
 
 **Alguns Endpoints da API**
--  Agendamentos
--  Criar Agendamento
+Agendamentos
+- Criar Agendamento
     POST: http://localhost:9494/api/agendamentos
     Content-Type: application/json
     {

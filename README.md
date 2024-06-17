@@ -193,6 +193,6 @@ GET /api/solicitantes
 
 ### Observações
 
-- Essa arquitetura e os padrões de projeto asseguram uma aplicação organizada, modular, e fácil de manter, seguindo as melhores práticas de desenvolvimento
-  com Spring Boot e JSF,aplicação também está preparada para fluxo HTTP.
+- Essa arquitetura e os padrões de projeto asseguram uma aplicação organizada, modular, assim facilitando manutenibilidade, seguindo as melhores práticas de desenvolvimento
+  com Spring Boot e JSF,aplicação também está preparada para fluxo dos verbos HTTP.
 - Qualquer duvida entrar em contato pelo email; carlosheryique@gmail.com

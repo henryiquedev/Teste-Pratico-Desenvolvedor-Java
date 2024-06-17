@@ -118,12 +118,12 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 
 **Arquivos Importantes**
 **Páginas JSF**
-index.xhtml Página inicial, ao clicar no botão que iniciar o sistema SAV(Sistema Agendamento Vaga)
-homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
-cadastroagendamento.xhtml Página para cadastro de agendamentos.
-consultaagendamento.xhtml Página para consulta de agendamentos.
-cadastrosolicitante.xhtml Página para consulta de solicitantes.
-cadastrovaga.xhtml Página para cadastro de vaga.
+- index.xhtml Página inicial, ao clicar no botão que iniciar o sistema SAV(Sistema Agendamento Vaga)
+- homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
+- cadastroagendamento.xhtml Página para cadastro de agendamentos.
+- consultaagendamento.xhtml Página para consulta de agendamentos.
+- cadastrosolicitante.xhtml Página para consulta de solicitantes.
+- cadastrovaga.xhtml Página para cadastro de vaga.
 
 
 

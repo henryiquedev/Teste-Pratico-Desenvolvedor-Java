@@ -136,19 +136,19 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 **Estrutura do Banco de Dados**
 **Tabelas**
 - Agendamento
-    id (PK)
-    data
-    numero
-    motivo
-    solicitante_id (FK)
+    id (PK),
+    data,
+    numero,
+    motivo,
+    solicitante_id (FK),
 - Solicitante
-  id (PK)
-  nome
+  id (PK),
+  nome,
 - Vagas
-  id (PK)
-  inicio
-  fim
-  quantidade
+  id (PK),
+  inicio,
+  fim,
+  quantidade,
 
 **Alguns Endpoints da API**
 Agendamentos

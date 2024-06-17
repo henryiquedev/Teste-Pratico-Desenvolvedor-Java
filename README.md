@@ -167,13 +167,13 @@ Agendamentos
   - GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
 
 - Solicitantes
-  Listar Solicitantes
-  - No navegador digite ao URL abaixo
+  - Listar Solicitantes
+   No navegador digite ao URL abaixo
   - GET: http://localhost:9494/api/solicitante/
 
 Vagas
-Listar Vagas
-- No navegador digite ao URL abaixo
+- Listar Vagas
+No navegador digite ao URL abaixo
 - GET: http://localhost:9494/api/vagas/
 
 

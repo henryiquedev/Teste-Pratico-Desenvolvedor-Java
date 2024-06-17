@@ -153,7 +153,7 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 **Alguns Endpoints da API**
 Agendamentos
 - Criar Agendamento
-    POST: http://localhost:9494/api/agendamentos
+    - POST: http://localhost:9494/api/agendamentos
     Content-Type: application/json
     {
     "data": "2024-06-16T10:00:00",
@@ -164,17 +164,17 @@ Agendamentos
 
 - Buscar Agendamentos
   No navegador digite ao URL abaixo
-  GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
+  - GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
 
 - Solicitantes
   Listar Solicitantes
   No navegador digite ao URL abaixo
-  GET: http://localhost:9494/api/solicitante/
+  - GET: http://localhost:9494/api/solicitante/
 
 Vagas
 Listar Vagas
 No navegador digite ao URL abaixo
-GET: http://localhost:9494/api/vagas/
+- GET: http://localhost:9494/api/vagas/
 
 
 ## Configuração e Execução

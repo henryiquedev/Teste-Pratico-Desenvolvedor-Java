@@ -16,7 +16,7 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 
 ## Arquitetura do Projeto
 
-- **Controller Layer:** Gerencia as requisições HTTP.
+- **Controller Layer:** Gerencia as requisições HTTP e mapeamennto das páginas JSF.
   - `AgendamentoController`,`SolicitanteController`,`VagaController`
 - **Service Layer:** Contém a lógica de negócio.
   - `AgendamentoService`,`SolicitanteService`,`VagaService`
@@ -31,7 +31,7 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 **1. Camadas do Projeto**
 
 Controller (Camada de Controle):
-Responsável por lidar com as requisições HTTP recebidas pelo servidor.
+Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeiamento dos arquivo XHTML.
 Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
 Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
 

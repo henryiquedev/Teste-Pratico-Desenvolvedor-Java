@@ -16,7 +16,7 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 
 ## Arquitetura do Projeto
 
-- **Controller Layer:** Gerencia as requisições HTTP e mapeamennto das páginas JSF.
+- **Controller Layer:** Gerencia as requisições HTTP e mapeamento das páginas JSF.
   - `AgendamentoController`,`SolicitanteController`,`VagaController`
 - **Service Layer:** Contém a lógica de negócio.
   - `AgendamentoService`,`SolicitanteService`,`VagaService`

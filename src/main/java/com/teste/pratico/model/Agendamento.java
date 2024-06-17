@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "agendamento")
+//@Table(name = "agendamento")
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Agendamento {
 
 
 
-    @ManyToOne(targetEntity = Solicitante.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "solicitante_id", nullable = false)
     private Solicitante solicitante;
 }

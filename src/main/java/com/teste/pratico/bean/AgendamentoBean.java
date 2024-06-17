@@ -45,11 +45,11 @@ public class AgendamentoBean implements Serializable {
 
     public void salvar() {
         try {
-            if (agendamento.getSolicitante() == null) {
+           /* if (agendamento.getSolicitante() == null) {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Solicitante é obrigatório.");
                 FacesContext.getCurrentInstance().addMessage(null, message);
                 return;
-            }
+            } hj16 */
             agendamentoService.salvarAgendamento(agendamento);
             agendamento = new Agendamento(); // Reseta o form
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Agendamento salvo com sucesso!");

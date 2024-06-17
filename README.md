@@ -128,10 +128,10 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 
 
 **Classes Java**
-AgendamentoBean Managed Bean para interagir com a camada de visão (JSF).
-AgendamentoController Controller para gerenciar requisições HTTP relacionadas a agendamentos.
-AgendamentoService Serviço para lógica de negócios de agendamentos.
-AgendamentoRepository Repositório para interações com o banco de dados de agendamentos.
+- AgendamentoBean Managed Bean para interagir com a camada de visão (JSF).
+- AgendamentoController Controller para gerenciar requisições HTTP relacionadas, mapear a página .XHTML a agendamentos.
+- AgendamentoService Serviço para lógica de negócios de agendamentos.
+- AgendamentoRepository Repositório para interações com o banco de dados de agendamentos.
 
 **Estrutura do Banco de Dados**
 **Tabelas**

@@ -31,7 +31,7 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 **1. Camadas do Projeto**
 
 Controller (Camada de Controle):
-Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeiamento dos arquivo XHTML.
+Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeamento dos arquivo XHTML.
 Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
 Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
 
@@ -118,11 +118,14 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 
 **Arquivos Importantes**
 **Páginas JSF**
+index.xhtml Página inicial, ao clicar no botão que iniciar o sistema SAV(Sistema Agendamento Vaga)
+homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
 cadastroagendamento.xhtml Página para cadastro de agendamentos.
 consultaagendamento.xhtml Página para consulta de agendamentos.
 cadastrosolicitante.xhtml Página para consulta de solicitantes.
 cadastrovaga.xhtml Página para cadastro de vaga.
-homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
+
+
 
 **Classes Java**
 AgendamentoBean Managed Bean para interagir com a camada de visão (JSF).

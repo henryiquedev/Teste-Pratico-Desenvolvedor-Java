@@ -135,41 +135,41 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 
 **Estrutura do Banco de Dados**
 **Tabelas**
-Agendamento
-id (PK)
-data
-numero
-motivo
-solicitante_id (FK)
-Solicitante
-id (PK)
-nome
-
-Vagas
-id (PK)
-inicio
-fim
-quantidade
+- Agendamento
+    id (PK)
+    data
+    numero
+    motivo
+    solicitante_id (FK)
+- Solicitante
+  id (PK)
+  nome
+- Vagas
+  id (PK)
+  inicio
+  fim
+  quantidade
 
 **Alguns Endpoints da API**
-Agendamentos
-Criar Agendamento
-POST: http://localhost:9494/api/agendamentos
-Content-Type: application/json
-{
-  "data": "2024-06-16T10:00:00",
-  "numero": "12345",
-  "motivo": "Reunião",
-  "solicitante": { "id": 1 }
-}
+-  Agendamentos
+-  Criar Agendamento
+    POST: http://localhost:9494/api/agendamentos
+    Content-Type: application/json
+    {
+    "data": "2024-06-16T10:00:00",
+    "numero": "12345",
+    "motivo": "Reunião",
+    "solicitante": { "id": 1 }
+    }
 
-Buscar Agendamentos
-GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
+- Buscar Agendamentos
+  No navegador digite ao URL abaixo
+  GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
 
-Solicitantes
-Listar Solicitantes
-No navegador digite ao URL abaixo
-GET: http://localhost:9494/api/solicitante/
+- Solicitantes
+  Listar Solicitantes
+  No navegador digite ao URL abaixo
+  GET: http://localhost:9494/api/solicitante/
 
 Vagas
 Listar Vagas

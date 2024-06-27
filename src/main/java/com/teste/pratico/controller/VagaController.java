@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
-@RequestMapping("/api") // Adiciona um prefixo comum para os endpoints de API
+@RequestMapping("/api")
 public class VagaController {
 
     @Autowired
@@ -20,12 +22,12 @@ public class VagaController {
         return vagaService.salvarVaga(vaga);
     }
 
-
-
-    @GetMapping("/cadastrovaga")
-    public String cadastrovaga() {
-        return "cadastrovaga"; // Isso mapeia para o arquivo cadastrovaga.xhtml na pasta src/main/resources/META-INF/resources/
+    @GetMapping("/vagas")
+    @ResponseBody
+    public List<Vaga> listarVagas() {
+        return vagaService.listarVagas();
     }
+
 
 
 }

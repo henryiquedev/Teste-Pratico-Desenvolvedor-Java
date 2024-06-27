@@ -20,10 +20,11 @@ public class SolicitanteService {
 
     @Transactional
     public Solicitante salvarSolicitante(Solicitante solicitante) {
-        //validarAgendamento(agendamento);
         return solicitanteRepository.save(solicitante);
     }
-
+   public List<Solicitante> listarSolicitantes() {
+        return solicitanteRepository.findAll();
+    }
 
 
 

@@ -5,32 +5,40 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-
 <h:head>
     <title>Cadastro de Agendamento</title>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById('agendamentoForm').reset();
+        }
+    </script>
 </h:head>
 <h:body>
     <h:form id="agendamentoForm">
+        <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />
+
         <p:panel header="Cadastro de Agendamento">
             <h:panelGrid columns="2" cellpadding="5">
 
                 <h:outputLabel for="data" value="Data: " />
-                <p:calendar id="data" value="#{agendamentoBean.agendamento.data}" pattern="dd/MM/yyyy" />
-
-                <h:outputLabel for="numero" value="Número: *" />
-                <p:inputText id="numero" value="#{agendamentoBean.agendamento.numero}" required="true" />
+                <p:calendar id="data" value="#{agendamentoBean.agendamento.data}" pattern="dd/MM/yyyy" required="true"/>
 
                 <h:outputLabel for="motivo" value="Motivo: *" />
                 <p:inputText id="motivo" value="#{agendamentoBean.agendamento.motivo}" required="true" />
 
+                <h:outputLabel for="numero" value="Número: *" />
+                <p:inputText id="numero" value="#{agendamentoBean.agendamento.numero}" required="true" />
+
                 <h:outputLabel for="solicitante" value="Solicitante: *" />
-                <p:selectOneMenu id="solicitante" value="#{agendamentoBean.agendamento.solicitante}" required="true">
+                <p:selectOneMenu id="solicitante" value="#{agendamentoBean.agendamento.solicitante}" required="true" converter="solicitanteConverter">
                     <f:selectItems value="#{agendamentoBean.solicitantes}" var="sol" itemLabel="#{sol.nome}" itemValue="#{sol}" />
                 </p:selectOneMenu>
 
-                <h:button value="Sair" outcome="homeagendamento.xhtml" />
-                <h:commandButton value="Salvar" action="#{agendamentoBean.salvar}" />
-
+                <p:button value="Sair" outcome="homeagendamento.xhtml"/>
+                <p:commandButton value="Salvar" action="#{agendamentoBean.salvar}"
+                                 update="msgs agendamentoForm"
+                                 oncomplete="if (!args.validationFailed) { resetForm(); PF('msgs').show([{severity:'info', summary:'Sucesso!', detail:'Os dados foram salvos com sucesso.'}]); }"
+                                 style="margin-left: 10px;" />
 
             </h:panelGrid>
         </p:panel>

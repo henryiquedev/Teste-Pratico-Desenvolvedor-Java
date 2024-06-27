@@ -4,7 +4,6 @@ import com.teste.pratico.model.Agendamento;
 import com.teste.pratico.model.Solicitante;
 import com.teste.pratico.model.Vaga;
 import com.teste.pratico.repository.AgendamentoRepository;
-import com.teste.pratico.repository.SolicitanteRepository;
 import com.teste.pratico.repository.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +19,11 @@ public class AgendamentoService {
     private AgendamentoRepository agendamentoRepository;
 
     @Autowired
-    private SolicitanteRepository solicitanteRepository;
-
-    @Autowired
     private VagaRepository vagaRepository;
 
     @Transactional
     public Agendamento salvarAgendamento(Agendamento agendamento) {
-       // validarAgendamento(agendamento);
+        validarAgendamento(agendamento);
         return agendamentoRepository.save(agendamento);
     }
 
@@ -59,11 +55,7 @@ public class AgendamentoService {
         return agendamentoRepository.findByDataBetweenAndSolicitante(inicio, fim, solicitante);
     }
 
-    public List<Solicitante> listarSolicitantes() {
-        return solicitanteRepository.findAll();
-    }
 
-    public List<Vaga> listarVagas() {
-        return vagaRepository.findAll();
-    }
+
+
 }

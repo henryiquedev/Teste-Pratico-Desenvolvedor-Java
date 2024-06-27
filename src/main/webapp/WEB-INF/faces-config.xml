@@ -3,6 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 	http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+	<converter>
+		<converter-for-class>com.teste.pratico.model.Solicitante</converter-for-class>
+		<converter-class>com.teste.pratico.converter.SolicitanteConverter</converter-class>
+	</converter>
+
+	<converter>
+		<converter-id>solicitanteConverter</converter-id>
+		<converter-class>com.teste.pratico.converter.SolicitanteConverter</converter-class>
+	</converter>
 </faces-config>
 
 

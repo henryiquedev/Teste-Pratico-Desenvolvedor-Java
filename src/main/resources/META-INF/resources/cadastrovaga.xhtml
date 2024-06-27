@@ -5,29 +5,49 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-
 <h:head>
     <title>Cadastro de Vaga</title>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById('agendamentoForm').reset();
+        }
+    </script>
 </h:head>
 <h:body>
     <h:form id="agendamentoForm">
-        <p:panel header="Cadastro de Agendamento">
+        <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />
+
+        <p:panel header="Cadastro de Vaga">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputLabel for="inicio" value="Data Inicio: " />
-                <p:calendar id="inicio" value="#{vagaBean.vaga.inicio}" pattern="dd/MM/yyyy" />
+                <p:calendar id="inicio" value="#{vagaBean.vaga.inicio}" pattern="dd/MM/yyyy" required="true" />
 
                 <h:outputLabel for="fim" value="Data Fim: " />
-                <p:calendar id="fim" value="#{vagaBean.vaga.fim}" pattern="dd/MM/yyyy" />
+                <p:calendar id="fim" value="#{vagaBean.vaga.fim}" pattern="dd/MM/yyyy" required="true" />
 
                 <h:outputLabel for="quantidade" value="Número de Vagas: *" />
                 <p:inputText id="quantidade" value="#{vagaBean.vaga.quantidade}" required="true" />
 
 
-                <h:button value="Sair" outcome="homeagendamento.xhtml" />
+                <p:button value="Sair" outcome="homeagendamento.xhtml" style="margin-right: 10px;"/>
 
-                <h:commandButton value="Salvar" action="#{vagaBean.salvar}" />
+                <p:commandButton value="Salvar" action="#{vagaBean.salvar}"
+                                 update="msgs agendamentoForm"
+                                 oncomplete="handleSaveResponse(xhr, status, args)"
+                                 style="margin-left: -50px;" />
             </h:panelGrid>
         </p:panel>
+
+        <script type="text/javascript">
+            function handleSaveResponse(xhr, status, args) {
+                if (!args.validationFailed) {
+                    if (args.savedSuccessfully) {
+                        PF('msgs').show([{severity: 'info', summary: 'Sucesso', detail: 'Dados salvos com sucesso!'}]);
+                        resetForm();
+                    }
+                }
+            }
+        </script>
     </h:form>
 </h:body>
 </html>

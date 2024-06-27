@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Consulta de Agendamento</title>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById('consultaForm').reset();
+        }
+    </script>
 </h:head>
 <h:body>
     <h:form id="consultaForm">
+        <p:growl id="msgs" showDetail="true" />
         <p:panel header="Consulta de Agendamento">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputLabel for="inicio" value="Data Início: *" />
                 <p:calendar id="inicio" value="#{agendamentoBean.inicio}" pattern="dd/MM/yyyy" required="true" />
-
                 <h:outputLabel for="fim" value="Data Fim: *" />
                 <p:calendar id="fim" value="#{agendamentoBean.fim}" pattern="dd/MM/yyyy" required="true" />
-
-                <h:outputLabel for="solicitante" value="Solicitante: *" />
-                <p:selectOneMenu id="solicitante" value="#{agendamentoBean.solicitante}" required="true">
-                    <f:selectItems value="#{agendamentoBean.solicitantes}" var="sol" itemLabel="#{sol.nome}" itemValue="#{sol}" />
-                </p:selectOneMenu>
             </h:panelGrid>
-            <h:commandButton value="Consultar" action="#{agendamentoBean.consultar}" update="consultaForm:agendamentos" />
-            <h:button value="Sair" outcome="homeagendamento.xhtml" />
+            <p:button value="Sair" outcome="homeagendamento.xhtml" />
+            <p:commandButton value="Consultar" action="#{agendamentoBean.consultar}" update="consultaForm:agendamentos msgs"
+                             oncomplete="handleConsultComplete(xhr, status, args)" style="margin-left: 30px;" />
         </p:panel>
         <p:dataTable id="agendamentos" value="#{agendamentoBean.agendamentos}" var="agendamento">
             <p:column headerText="Data">
@@ -40,5 +42,15 @@
             </p:column>
         </p:dataTable>
     </h:form>
+
+    <script type="text/javascript">
+        function handleConsultComplete(xhr, status, args) {
+            if (!args.validationFailed) {
+                PF('msgs').show([{severity: 'info', summary: 'Sucesso', detail: 'Consulta realizada com sucesso!'}]);
+                resetForm();
+            }
+        }
+    </script>
+
 </h:body>
 </html>

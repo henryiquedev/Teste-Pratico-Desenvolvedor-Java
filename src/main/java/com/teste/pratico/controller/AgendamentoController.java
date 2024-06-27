@@ -2,9 +2,12 @@ package com.teste.pratico.controller;
 
 import com.teste.pratico.model.Agendamento;
 import com.teste.pratico.model.Solicitante;
-import com.teste.pratico.model.Vaga;
 import com.teste.pratico.service.AgendamentoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,55 +15,35 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api") // Adiciona um prefixo comum para os endpoints de API
+@RequestMapping("/api")
 public class AgendamentoController {
 
     @Autowired
     private AgendamentoService agendamentoService;
 
+    private static final Logger log = LoggerFactory.getLogger(AgendamentoController.class);
+
+
+
     @PostMapping("/agendamentos")
-    @ResponseBody
     public Agendamento criarAgendamento(@RequestBody Agendamento agendamento) {
         return agendamentoService.salvarAgendamento(agendamento);
     }
 
     @GetMapping("/listaragendamentos")
     @ResponseBody
-    public List<Agendamento> buscarAgendamentos(@RequestParam LocalDateTime inicio, @RequestParam LocalDateTime fim, @RequestParam Long solicitanteId) {
+    public ResponseEntity<List<Agendamento>> buscarAgendamentos(
+            @RequestParam("inicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime inicio,
+            @RequestParam("fim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fim,
+            @RequestParam("solicitanteId") Long solicitanteId) {
+
+
+       log.debug("Parâmetros recebidos - Inicio: {}, Fim: {}, SolicitanteId: {}", inicio, fim, solicitanteId);
         Solicitante solicitante = new Solicitante();
         solicitante.setId(solicitanteId);
-        return agendamentoService.buscarAgendamentos(inicio, fim, solicitante);
+        List<Agendamento> agendamentos = agendamentoService.buscarAgendamentos(inicio, fim, solicitante);
+      log.debug("Agendamentos encontrados: {}", agendamentos.size());
+        return ResponseEntity.ok(agendamentos);
     }
 
-   @GetMapping("/solicitante")
-    @ResponseBody
-    public List<Solicitante> listarSolicitantes() {
-        return agendamentoService.listarSolicitantes();
-    }
-
-    @GetMapping("/vagas")
-    @ResponseBody
-    public List<Vaga> listarVagas() {
-        return agendamentoService.listarVagas();
-    }
-
-    @GetMapping("/index")
-    public String index() {
-        return "index"; // Isso mapeia para o arquivo index.xhtml na pasta src/main/resources/META-INF/resources/
-    }
-
-    @GetMapping("/cadastroagendamento")
-    public String cadastroagendamento() {
-        return "cadastroagendamento"; // Isso mapeia para o arquivo cadastroagendamento.xhtml na pasta src/main/resources/META-INF/resources/
-    }
-
-    @GetMapping("/consultaagendamento")
-    public String consultaagendamento() {
-        return "consultaagendamento"; // Isso mapeia para o arquivo consultaagendamento.xhtml na pasta src/main/resources/META-INF/resources/
-    }
-
-    @GetMapping("/homeagendamento")
-    public String homeagendamento() {
-        return "homeagendamento"; // Isso mapeia para o arquivo homeagendamento.xhtml na pasta src/main/resources/META-INF/resources/
-    }
 }

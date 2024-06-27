@@ -23,19 +23,16 @@ public class VagaBean implements Serializable {
 
     private Vaga vaga;
 
-    //private List<Solicitante> solicitantes;
-
 
     @PostConstruct
     public void init() {
         vaga = new Vaga();
-        //solicitantes = solicitanteService.listarSolicitantes();
     }
 
     public void salvar() {
         try {
             vagaService.salvarVaga(vaga);
-            vaga = new Vaga(); // Reseta o form
+            vaga = new Vaga();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Vaga salva com sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, message);
         } catch (Exception e) {

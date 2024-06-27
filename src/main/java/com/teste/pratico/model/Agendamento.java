@@ -6,22 +6,25 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-//@Table(name = "agendamento")
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private LocalDateTime data;
 
-    private String numero;
-
+    @Column
     private String motivo;
 
-
+    @Column(length = 20)
+    private String numero;
 
     @ManyToOne
     @JoinColumn(name = "solicitante_id", nullable = false)
     private Solicitante solicitante;
+
+   
+
 }
 

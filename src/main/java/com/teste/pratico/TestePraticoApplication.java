@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication //(scanBasePackages = "com.teste.pratico")
+@SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.teste.pratico"})
 public class TestePraticoApplication {
@@ -14,4 +14,9 @@ public class TestePraticoApplication {
 		SpringApplication.run(TestePraticoApplication.class, args);
 	}
 
+
+
+
 }
+
+

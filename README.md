@@ -30,38 +30,38 @@ A aplicação permite o cadastro, consulta e listagem de agendamentos e solicita
 
 **1. Camadas do Projeto**
 
-Controller (Camada de Controle):
-Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeiamento dos arquivo XHTML.
-Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
-Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
+- Controller (Camada de Controle):
+  Responsável por lidar com as requisições HTTP recebidas pelo servidor e o mapeamento dos arquivo XHTML.
+  Utiliza anotações do Spring (@RestController, @Controller, @RequestMapping, etc.) para mapear URLs para métodos específicos.
+  Exemplo: AgendamentoController para lidar com endpoints relacionados a agendamentos.
 
-Service (Camada de Serviço):
-Contém a lógica de negócio da aplicação.
-Utiliza a anotação @Service do Spring.
-Exemplo: AgendamentoService que contém métodos para salvar, buscar e listar agendamentos.
+- Service (Camada de Serviço):
+  Contém a lógica de negócio da aplicação.
+  Utiliza a anotação @Service do Spring.
+  Exemplo: AgendamentoService que contém métodos para salvar, buscar e listar agendamentos.
 
-Repository (Camada de Repositório):
-Responsável pela interação com o banco de dados.
-Utiliza Spring Data JPA para operações CRUD.
-Exemplo: AgendamentoRepository que estende JpaRepository para fornecer métodos de acesso ao banco de dados.
+- Repository (Camada de Repositório):
+  Responsável pela interação com o banco de dados.
+  Utiliza Spring Data JPA para operações CRUD.
+  Exemplo: AgendamentoRepository que estende JpaRepository para fornecer métodos de acesso ao banco de dados.
 
-Model (Camada de Modelo):
-Contém as classes de entidade que representam as tabelas do banco de dados.
-Utiliza anotações do JPA (@Entity, @Table, @Column, etc.) para mapear classes Java para tabelas no banco de dados.
-Exemplo: Agendamento e Solicitante.
+- Model (Camada de Modelo):
+  Contém as classes de entidade que representam as tabelas do banco de dados.
+  Utiliza anotações do JPA (@Entity, @Table, @Column, etc.) para mapear classes Java para tabelas no banco de dados.
+  Exemplo: Agendamento e Solicitante.
 
 **2. Frameworks e Ferramentas Utilizadas**
 
-Spring Boot:
-Framework principal para criar aplicações Java robustas e escaláveis.
-Spring Data JPA:
-Abstração sobre o JPA para facilitar operações com o banco de dados.
-Hibernate:
-Implementação do JPA usada para mapeamento objeto-relacional.
-PrimeFaces:
-Biblioteca de componentes UI para JSF.
-HSQLDB:
-Banco de dados relacional leve usado para persistência de dados.
+ - Spring Boot:
+    Framework principal para criar aplicações Java robustas e escaláveis.
+- Spring Data JPA:
+  Abstração sobre o JPA para facilitar operações com o banco de dados.
+- Hibernate:
+  Implementação do JPA usada para mapeamento objeto-relacional.
+- PrimeFaces:
+  Biblioteca de componentes UI para JSF.
+- HSQLDB:
+  Banco de dados relacional leve usado para persistência de dados.
 
 **3. Banco de Dados**
 Utiliza HSQLDB como banco de dados embutido para desenvolvimento e testes.
@@ -118,60 +118,63 @@ VagaService persiste a nova vaga no banco de dados via VagaRepository.
 
 **Arquivos Importantes**
 **Páginas JSF**
-cadastroagendamento.xhtml Página para cadastro de agendamentos.
-consultaagendamento.xhtml Página para consulta de agendamentos.
-cadastrosolicitante.xhtml Página para consulta de solicitantes.
-cadastrovaga.xhtml Página para cadastro de vaga.
-homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
+- index.xhtml Página inicial, ao clicar no botão que iniciar o sistema SAV(Sistema Agendamento Vaga)
+- homeagendamento.xhtml Página que dar acesso a todas as outras página do sistema.
+- cadastroagendamento.xhtml Página para cadastro de agendamentos.
+- consultaagendamento.xhtml Página para consulta de agendamentos.
+- cadastrosolicitante.xhtml Página para consulta de solicitantes.
+- cadastrovaga.xhtml Página para cadastro de vaga.
+
+
 
 **Classes Java**
-AgendamentoBean Managed Bean para interagir com a camada de visão (JSF).
-AgendamentoController Controller para gerenciar requisições HTTP relacionadas a agendamentos.
-AgendamentoService Serviço para lógica de negócios de agendamentos.
-AgendamentoRepository Repositório para interações com o banco de dados de agendamentos.
+- AgendamentoBean Managed Bean para interagir com a camada de visão (JSF).
+- AgendamentoController Controller para gerenciar requisições HTTP relacionadas, mapear a página .XHTML a agendamentos.
+- AgendamentoService Serviço para lógica de negócios de agendamentos.
+- AgendamentoRepository Repositório para interações com o banco de dados de agendamentos.
 
 **Estrutura do Banco de Dados**
 **Tabelas**
-Agendamento
-id (PK)
-data
-numero
-motivo
-solicitante_id (FK)
-Solicitante
-id (PK)
-nome
-
-Vagas
-id (PK)
-inicio
-fim
-quantidade
+- Agendamento
+    id (PK),
+    data,
+    numero,
+    motivo,
+    solicitante_id (FK),
+- Solicitante
+  id (PK),
+  nome,
+- Vagas
+  id (PK),
+  inicio,
+  fim,
+  quantidade,
 
 **Alguns Endpoints da API**
 Agendamentos
-Criar Agendamento
-POST: http://localhost:9494/api/agendamentos
-Content-Type: application/json
-{
-  "data": "2024-06-16T10:00:00",
-  "numero": "12345",
-  "motivo": "Reunião",
-  "solicitante": { "id": 1 }
-}
+- Criar Agendamento
+    - POST: http://localhost:9494/api/agendamentos
+    - Content-Type: application/json
+    {
+    "data": "2024-06-16T10:00:00",
+    "numero": "12345",
+    "motivo": "Reunião",
+    "solicitante": { "id": 1 }
+    }
 
-Buscar Agendamentos
-GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
+- Buscar Agendamentos
+  - No navegador digite ao URL abaixo
+  - GET: http://localhost:9494/api/listaragendamentos?inicio=2024-06-01T00:00:00&fim=2024-06-30T23:59:59&solicitanteId=1
 
-Solicitantes
-Listar Solicitantes
-No navegador digite ao URL abaixo
-GET: http://localhost:9494/api/solicitante/
+- Solicitantes
+  - Listar Solicitantes
+   No navegador digite ao URL abaixo
+  - GET: http://localhost:9494/api/solicitante/
 
 Vagas
-Listar Vagas
+- Listar Vagas
 No navegador digite ao URL abaixo
-GET: http://localhost:9494/api/vagas/
+- GET: http://localhost:9494/api/vagas/
 
 
 ## Configuração e Execução

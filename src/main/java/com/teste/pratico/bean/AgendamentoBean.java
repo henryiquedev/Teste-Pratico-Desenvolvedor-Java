@@ -6,15 +6,17 @@ import com.teste.pratico.repository.SolicitanteRepository;
 import com.teste.pratico.service.AgendamentoService;
 import com.teste.pratico.service.SolicitanteService;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,8 @@ import org.slf4j.Logger;
 @Data
 @ViewScoped
 @Component
-public class AgendamentoBean implements Serializable {
+@ManagedBean
+public class AgendamentoBean  {
 
     @Autowired
     private AgendamentoService agendamentoService;
@@ -45,6 +48,12 @@ public class AgendamentoBean implements Serializable {
 
     private List<Solicitante> solicitantes = new ArrayList<>();
 
+
+    @Setter
+    @Getter
+
+
+
     private static final Logger logger = LoggerFactory.getLogger(AgendamentoBean.class); //hj16
 
 
@@ -57,14 +66,25 @@ public class AgendamentoBean implements Serializable {
 
     public void salvar() {
         try {
+            logger.info("Agendamento: {}", agendamento);
+            logger.info("Solicitante do Agendamento: {}", agendamento.getSolicitante());
+
+            if (agendamento.getSolicitante() == null || agendamento.getSolicitante().getId() == null) {
+                throw new IllegalArgumentException("Solicitante ID must not be null!");
+            }
+
+            if (agendamento.getId() == null) {
+                throw new IllegalArgumentException("O ID do agendamento não pode ser nulo");
+            }
             agendamentoService.salvarAgendamento(agendamento);
             agendamento = new Agendamento();
+
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Agendamento salvo com sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, message);
         } catch (Exception e) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar agendamento", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, message);
-            e.printStackTrace();
+            logger.error("Erro ao salvar agendamento", e);
         }
     }
 

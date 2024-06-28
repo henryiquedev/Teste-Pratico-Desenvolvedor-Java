@@ -24,7 +24,7 @@ public class Agendamento {
     @JoinColumn(name = "solicitante_id", nullable = false)
     private Solicitante solicitante;
 
-   
+
 
 }
 

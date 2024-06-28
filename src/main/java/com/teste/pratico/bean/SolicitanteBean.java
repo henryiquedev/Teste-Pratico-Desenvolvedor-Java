@@ -8,11 +8,12 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Data
 @ViewScoped
 @Component
-@Named(value = "solicitanteBean")
+@ManagedBean
 public class SolicitanteBean  {
 
     @Autowired
@@ -29,11 +30,16 @@ public class SolicitanteBean  {
 
     private Solicitante solicitante;
 
+
+
     @Setter
     @Getter
     private List<Solicitante> solicitantes;
 
 
+
+
+    private Solicitante agendamento;
 
 
    @PostConstruct
@@ -43,7 +49,7 @@ public class SolicitanteBean  {
 
     }
 
-    //
+
 
     public Solicitante findSolicitanteById(Long id) {
         for (Solicitante solicitante : solicitantes) {
@@ -53,7 +59,7 @@ public class SolicitanteBean  {
         }
         return null;
     }
-//
+
     public void salvar() {
         try {
             solicitanteService.salvarSolicitante(solicitante);

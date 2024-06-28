@@ -8,10 +8,10 @@
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 
-	<converter>
+	<!--<converter>
 		<converter-for-class>com.teste.pratico.model.Solicitante</converter-for-class>
 		<converter-class>com.teste.pratico.converter.SolicitanteConverter</converter-class>
-	</converter>
+	</converter>-->
 
 	<converter>
 		<converter-id>solicitanteConverter</converter-id>
